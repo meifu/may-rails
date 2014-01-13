@@ -1,8 +1,24 @@
 <div>
 	<div class="group">
 		<%= link_to("Edit", edit_group_path(@group), :class => "btn btn-mini btn-primary pull-right" ) %>
+		<%= link_to("New Post", new_group_post_path(@group), :class => "btn btn-primary") %>
 	</div>
 
 	<h2> <%= @group.title %> </h2>
 	<p> <%= @group.description %> </p>
+
+	<table>
+		<% @posts.each do |post| %>
+		<tr>
+			<td>
+				<%= post.content %>
+			</td>
+			<td>
+				<%= link_to("Edit", edit_group_post_path(post.group, post), :class => "btn") %>
+			</td>
+			<td>
+				<%= link_to("Delete", group_post_path(post.group, post), :class => "btn", :method => :delete, :confirm => "Are you sure?") %> 
+			</td>
+		</tr>
+	</table>
 </div>
