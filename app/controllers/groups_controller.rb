@@ -21,6 +21,7 @@ class GroupsController < ApplicationController
 
 	def edit
 		@group = Group.find(params[:id])
+		@post = @group.posts.find(params[:id])
 	end
 
 	def update
@@ -34,11 +35,14 @@ class GroupsController < ApplicationController
 	end
 
 	def destroy
-		@group = Group.find(params[:id])
+		@group = Group.find(params[:group_id])
+		@post = @group.posts.find(params[:id])
 
-		@group.destroy
+		# @group.destroy
+		@post.destroy
 
-		redirect_to groups_path
+		# redirect_to groups_path
+		redirect_to group_path(@group)
 	end
 
 
