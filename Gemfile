@@ -43,3 +43,9 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'devise'
+
+# group :development do
+# 	gem "capistrano"
+# end
